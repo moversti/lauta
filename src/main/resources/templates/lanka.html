@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Lauta</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+	<h1><a th:href="@{/}">Lauta</a></h1>
+
+	<h2 th:text="${lanka.nimi}"></h2>
+	
+	<div th:each="post : ${postaukset}">
+	<p th:text="${post.content}"></p>
+	</div>
+	<h3>Vastaa:</h3>
+	<form method="post">
+		<div>
+			<label for="p"> Postaus:
+			<textarea id="p" name="p"></textarea>
+			</label>
+			<input type="submit" value="Vastaa" />
+		</div>
+
+	</form>
+</body>
+</html>

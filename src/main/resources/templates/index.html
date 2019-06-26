@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Lauta</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+	<h1>Lauta</h1>
+
+	<h2>Uusi lanka:</h2>
+	<form method="post">
+		<div>
+			<label for="nimi"> Otsikko: <input id="nimi" name="nimi" />
+			</label>
+			<label for="op"> Postaus:
+			<textarea id="op" name="op"></textarea>
+			</label>
+			<input type="submit" value="Uusi lanka" />
+		</div>
+
+	</form>
+
+	<div th:switch="${langat.isEmpty()}">
+		<h2 th:case="true">Ei lankoja!</h2>
+		<div th:case="*">
+			<h2>Langat</h2>
+			<div th:each="lanka : ${langat}">
+				<a th:href="@{lanka/{id}(id=${lanka.id})}" th:text="${lanka.nimi}"></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
